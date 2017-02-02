@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<head>
+	<title>Register as a Jobseeker</title>
+</head>
+{% block body_block %}
+<h1>Register as a Jobseeker</h1>
+
+	{% if registered %}
+	<strong>Thanks for registering!</strong>
+	<a href="{% url 'index' %}">Return Home</a>
+	{% else %}
+	<strong class="form-signin-heading"><h2>Register Here</h2></strong>
+
+	<form class="form-signin" id='user_form' method ='post' action ='/register_jobseeker/' enctype="multipart/form-data">
+		<strong class="form-signin-heading">Please Register</strong>
+		{% csrf_token %}
+
+		{% for field in user_form.visible_fields %}
+		<div class='form-group'>
+			{{field.errors}}<br>
+			{{field.help_text}}<br>
+			{{field.label}}
+			{{field}}
+		</div>
+		{% endfor %}
+
+		{% for field in profile_form.visible_fields %}
+		<div class="form-group">
+			{{field.errors}}<br>
+			{{field.help_text}}<br>
+			{{field.label}}
+			{{field}}
+		</div>
+		{% endfor %}
+
+		<button class="btn btn-lg btn-primary btn-block" type="submit" value="submit"> Register</button>
+	</form>
+	{% endif %}
+{% endblock %}

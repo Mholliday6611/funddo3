@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<head>
+	<title>Register Start</title>
+</head>
+{% block body_block %}
+<li>
+<a href="{% url 'register_funder' %}">Register As a Funder Now!</a>
+</li>
+<li>
+<a href="{%url 'register_jobseeker' %}">Register As a Job Seeker Now!</a>
+</li>
+{% endblock %}

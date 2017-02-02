@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body_block %}
+{% if profile.picture %}
+<img src="{{profile.picture.url}}" class="img-responsive img-circle" style="width:150px;">
+{% else %}
+<img src="http://www.tshirthell.com/shirts/products/a339/a339.gif?v11301bss2.jpg" class="img-responsive img-circle" style="width:150px;">
+		{% endif %}
+<h1>{{profile.user.username}}</h1>
+		{% if profile.funder = False and requests %}
+		<h3>Request Made :</h3>
+		<ul>
+			{% for req in requests %}
+			<div id='req'>
+				<li>
+					<a href="/requests/{{req.id}}">
+					{{ req.title }}</a>
+			{% endfor %}
+		{% endif %}
+<div class="col-xs-12 col-md-6">
+		<h3>About {{profile.user.username}}</h3>
+		{% if profile.services and profile.funder = True %}
+		<p>{{profile.services}}</p>
+		{% endif %}
+		{% if profile.bio %}
+		<p>{{profile.bio}}</p>
+		{% endif %}
+	</div>
+{% if profile.user == user and profile.funder = True %}
+		<a href="{% url 'edit_funderprofile' profile.user.username %}">Edit Your Funder Profile</a>
+		{% endif %}
+
+{% if profile.user == user and profile.jobseeker = True %}
+		<a href="{% url 'edit_jobseekerprofile' profile.user.username %}">Edit Your JobSeeker Profile</a>
+		{% endif %}				
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body_block %}
+
+<h1>Welcome  {% if user.is_authenticated %}<a href="{% url 'profile' user.username %}">{{user.username}}</a> {% endif %}</h1>
+
+<h1>Users by Location</h1>
+	<h1>Brooklyn</h1>
+	{% for user in user_location %}
+	<ul style="list-style: none">
+		<li><a href="{% url 'profile' user %}">{% if user.your_location = 1 %}{{user}}{% endif %}</a></li>
+	</ul>
+	{% endfor %}
+
+	<h1>Queens</h1>
+	{% for user in user_location %}
+	<ul style="list-style: none">
+	<li><a href="{% url 'profile' user %}">{% if user.your_location = 2 %}{{user}}{% endif %}</a></li>
+	</ul>
+	{% endfor %}
+
+	<h1>Manhattan</h1>
+	{% for user in user_location %}
+	<ul style="list-style: none">
+	<li><p><a href="{% url 'profile' user %}">{% if user.your_location = 3 %}{{user}}{% endif %}</p></a></li>
+	</ul>
+	{% endfor %}
+
+	<h1>The Bronx</h1>
+	{% for user in user_location %}
+	<ul style="list-style: none">
+	<li><p><a href="{% url 'profile' user %}">{% if user.your_location = 4 %}{{user}}{% endif %}</p></a></li>
+	</ul>
+	{% endfor %}
+
+	<h1>Staten Island</h1>
+	{% for user in user_location %}
+	<ul style="list-style: none">
+	<li><p><a href="{% url 'profile' user %}">{% if user.your_location = 5 %}{{user}}{% endif %}</p></a></li>
+	</ul>
+	{% endfor %}
+	
+
+{% endblock %}

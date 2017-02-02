@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% load static %}
+<head>
+	<title>{% block title %} About {% endblock %}</title>
+</head>
+{% block body_block %}
+{{ user.username }}
+blah blah
+{% endblock %}

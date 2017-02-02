@@ -1,0 +1,12 @@
+{% load static %}
+
+<head>
+	<title>{% block title %}Make a Request{% endblock %}</title>
+</head>
+{% block body_block %}
+<h1>New post</h1>
+    <form method="POST" class="RequestForm">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+{% endblock %}

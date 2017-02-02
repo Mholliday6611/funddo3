@@ -1,0 +1,20 @@
+{% load static %}
+
+<html lang="eng">
+<head>
+	<title>{% block title %}Fund Dos!{% endblock %}</title>
+</head>
+<body>
+<a href="{% url 'index' %}">HOME </a>
+<a href="{% url 'about' %}">About Us</a>
+<a href="{% url 'gallery' %}">Gallery </a>
+{% if user.is_authenticated %}
+<a href="{% url 'logout' %}">logout</a>
+<a href="{% url 'make_request' %}">MAKE A REQUEST</a>
+{% else %}
+<a href="{% url 'register' %}">register</a>
+<a href="{% url 'login' %}">login</a>
+{% endif %}
+{% block body_block %}{% endblock %}
+</body>
+</html>
