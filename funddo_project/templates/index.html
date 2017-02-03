@@ -11,6 +11,7 @@
 	<li class="list-group-item"><a href="/requests/{{req.id}}"><p>{{ req.title }}</p></a></li>
 	{% endfor %}
 <br>
-<a href="{% url 'userlocation' %}"> Users by location </a>
+<a href="{% url 'userlocationjob' %}"> Jobseekers by location </a>
+<a href="{% url 'userlocationfund' %}"> Funders by location </a>
 
 {% endblock %}

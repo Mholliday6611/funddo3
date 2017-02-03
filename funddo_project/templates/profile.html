@@ -27,10 +27,12 @@
 		{% endif %}
 	</div>
 {% if profile.user == user and profile.funder = True %}
+<!-- {% profile.funder = True %} -->
 		<a href="{% url 'edit_funderprofile' profile.user.username %}">Edit Your Funder Profile</a>
 		{% endif %}
 
 {% if profile.user == user and profile.jobseeker = True %}
+<!-- {% if profile.jobseeker = True %} -->
 		<a href="{% url 'edit_jobseekerprofile' profile.user.username %}">Edit Your JobSeeker Profile</a>
 		{% endif %}				
 {% endblock %}

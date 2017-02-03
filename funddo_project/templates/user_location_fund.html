@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body_block %}
+
+<h1>Welcome  {% if user.is_authenticated %}<a href="{% url 'profile' user.username %}">{{user.username}}</a> {% endif %}</h1>
+
+<h1>Users by Location</h1>
+	<h1>Brooklyn</h1>
+	{% for user in user_location %}
+	<ul style="list-style: none">
+		<li>{% if user.your_location = 1 and user.funder = True %}<a href="{% url 'profile' user %}">{{user}}</a>{{user.bio}}<img src="{{user.picture.url}}">{% endif %}</li>
+	</ul>
+	{% endfor %}
+
+	<h1>Queens</h1>
+	{% for user in user_location %}
+	<ul style="list-style: none">
+	<li>{% if user.your_location = 2 and user.funder = True %}<a href="{% url 'profile' user %}">{{user}}</a>{{user.bio}}<img src="{{user.picture.url}}">{% endif %}</li>
+	</ul>
+	{% endfor %}
+
+	<h1>Manhattan</h1>
+	{% for user in user_location %}
+	<ul style="list-style: none">
+	<li>{% if user.your_location = 3 and user.funder = True %}<a href="{% url 'profile' user %}">{{user}}</a>{{user.bio}}<img src="{{user.picture.url}}">{% endif %}</li>
+	</ul>
+	{% endfor %}
+
+	<h1>The Bronx</h1>
+	{% for user in user_location %}
+	<ul style="list-style: none">
+	<li>{% if user.your_location = 4 and user.funder = True %}<a href="{% url 'profile' user %}">{{user}}</a>{{user.bio}}<img src="{{user.picture.url}}">{% endif %}</li>
+	</ul>
+	{% endfor %}
+
+	<h1>Staten Island</h1>
+	{% for user in user_location %}
+	<ul style="list-style: none">
+	<li>{% if user.your_location = 5 and user.funder = True %}<a href="{% url 'profile' user %}">{{user}}</a>{{user.bio}}<img src="{{user.picture.url}}">{% endif %}</li>
+	</ul>
+	{% endfor %}
+	
+
+{% endblock %}

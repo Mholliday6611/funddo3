@@ -25,13 +25,6 @@ def index(request):
 	
 	return render(request, 'index.html', context_dict)
 
-def userbylocation(request):
-	context_dict = {}
-	user_location = UserProfile.objects.order_by('your_location')
-
-	context_dict['user_location']= user_location
-	
-	return render(request, 'user_location.html', context_dict)
 def about(request):
 	context_dict = {}
 	return render(request, 'about.html', context_dict)
@@ -176,6 +169,20 @@ def user_profile(request, user_username):
 	context_dict['requests'] = Request.objects.filter(poster=user)
 
 	return render(request, 'profile.html', context_dict)
+
+def userbylocationjob(request):
+	context_dict = {}
+	user_location = UserProfile.objects.order_by('your_location')
+	context_dict['user_location']= user_location
+	
+	return render(request, 'user_location_job.html', context_dict)
+
+def userbylocationfund(request):
+	context_dict = {}
+	user_location = UserProfile.objects.order_by('your_location')
+	context_dict['user_location']= user_location
+	
+	return render(request, 'user_location_fund.html', context_dict)
 @login_required
 def edit_funderprofile(request, user_username):
 	profile = get_object_or_404(UserProfile, user__username=user_username)
@@ -255,7 +262,7 @@ class SettingsView(LoginRequiredMixin, FormView):
 	def form_valid(self, form):
 		form.save()
 		update_session_auth_hash(self, request, form.user)
-		return super(SettubgView, self).form_valid(form)
+		return super(SettingView, self).form_valid(form)
 
 class PasswordRecoveryView(FormView):
 	template_name = "password-recovery.html"
